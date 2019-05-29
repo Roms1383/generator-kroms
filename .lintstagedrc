@@ -1,3 +1,5 @@
 '*.js':
   - yarn eslint --fix
   - git add
+'*.md':
+  - yarn remark
