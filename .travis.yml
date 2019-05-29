@@ -1,0 +1,37 @@
+language: node_js
+git:
+  submodules: false
+cache:
+  yarn: true
+  npm: true
+  directories:
+    - node_modules
+before_install:
+  - npm i -g npm@6.9.0
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.16.0
+  - export PATH="$HOME/.yarn/bin:$PATH"
+install:
+  - yarn
+stages:
+  - name: lint
+  - name: tests
+    install: true
+  - name: coverage
+    install: true
+    skip_cleanup: true
+    if: branch = master AND NOT tag AND type NOT IN (pull_request)
+  - name: release
+    install: true
+    if: branch = master AND NOT tag AND type NOT IN (pull_request)
+jobs:
+  include:
+    - stage: lint
+      script: yarn lint
+    - stage: tests
+      script: yarn test --coverage
+    - stage: coverage
+      script: yarn coverage
+    - stage: release
+      script: yarn release
+matrix:
+  fast_finish: true
