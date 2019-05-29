@@ -24,13 +24,8 @@ jobs:
     - stage: lint
       script: yarn lint
     - stage: tests
-      name: unit-tests
       script: yarn test --coverage
-    - stage: tests
-      name: coverage
-      script: yarn coverage
-      skip_cleanup: true
-      if: branch = master AND NOT tag AND type NOT IN (pull_request)
+      after_success: test $TRAVIS_BRANCH = "master" && test $TRAVIS_TAG = "false" && test $TRAVIS_PULL_REQUEST = "false" && yarn coverage
     - stage: release
       script: yarn release
 matrix:
