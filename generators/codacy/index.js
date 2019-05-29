@@ -8,4 +8,7 @@ module.exports = class extends Generator {
     const dependencies = await this.dependencies(name)
     this.yarnInstall(dependencies, { dev: true })
   }
+  writing () {
+    this.package.scripts.set('coverage', 'cat ./coverage/lcov.info | codacy-coverage')
+  }
 }

@@ -10,5 +10,6 @@ module.exports = class extends Generator {
   }
   writing () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.releaserc'))
+    this.package.scripts.set('release', 'yarn semantic-release')
   }
 }

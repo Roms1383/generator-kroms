@@ -42,6 +42,7 @@
   "scripts": {
     "lint": "yarn eslint '*.js'",
     "test": "yarn jest",
+    "coverage": "cat ./coverage/lcov.info | codacy-coverage",
     "release": "yarn semantic-release"
   }
 }

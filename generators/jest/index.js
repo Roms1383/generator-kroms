@@ -10,5 +10,6 @@ module.exports = class extends Generator {
   }
   writing () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('jest.config.js'))
+    this.package.scripts.set('test', 'yarn jest')
   }
 }

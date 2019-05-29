@@ -8,6 +8,10 @@ module.exports = context => {
   && context.fs.read(context.destinationPath(NAME))
   const readJSON = () => exists()
   && context.fs.readJSON(context.destinationPath(NAME))
+  const write = content => exists()
+  && context.fs.write(context.destinationPath(NAME), content)
+  const writeJSON = content => exists()
+  && context.fs.writeJSON(context.destinationPath(NAME), content)
   const get = path => Array.isArray(path)
   ? R.path(path, readJSON())
   : path.includes('.')
@@ -17,6 +21,8 @@ module.exports = context => {
     exists,
     read,
     readJSON,
+    write,
+    writeJSON,
     get
   }
 }

@@ -10,5 +10,6 @@ module.exports = class extends Generator {
   }
   writing () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.eslintrc'))
+    this.package.scripts.set('lint', `yarn eslint '*.js'`)
   }
 }
