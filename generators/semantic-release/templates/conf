@@ -1,3 +1,3 @@
 {
-  "plugins": ["semantic-release-kroms"]
+  "extends": ["semantic-release-kroms"]
 }
