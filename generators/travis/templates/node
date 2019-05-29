@@ -25,7 +25,7 @@ jobs:
       script: yarn lint
     - stage: tests
       script: yarn test --coverage
-      after_success: if [ "${TRAVIS_BRANCH}" = "master" ] && [ -n "${TRAVIS_TAG}" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn coverage; else echo "TRAVIS_BRANCH = '${TRAVIS_BRANCH}', TRAVIS_TAG = '${TRAVIS_TAG}', TRAVIS_PULL_REQUEST = '${TRAVIS_PULL_REQUEST}'"; fi
+      after_success: if [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_TAG}" = "" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn coverage; fi
     - stage: release
       script: yarn release
 matrix:
