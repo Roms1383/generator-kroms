@@ -16,10 +16,6 @@ stages:
   - name: lint
   - name: tests
     install: true
-  - name: coverage
-    install: true
-    skip_cleanup: true
-    if: branch = master AND NOT tag AND type NOT IN (pull_request)
   - name: release
     install: true
     if: branch = master AND NOT tag AND type NOT IN (pull_request)
@@ -28,9 +24,13 @@ jobs:
     - stage: lint
       script: yarn lint
     - stage: tests
+      name: unit-tests
       script: yarn test --coverage
-    - stage: coverage
+    - stage: tests
+      name: coverage
       script: yarn coverage
+      skip_cleanup: true
+      if: branch = master AND NOT tag AND type NOT IN (pull_request)
     - stage: release
       script: yarn release
 matrix:
