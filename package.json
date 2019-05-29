@@ -1,6 +1,6 @@
 {
   "name": "generator-kroms",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "Very opinionated generator for Yeoman",
   "files": [
     "generators"
