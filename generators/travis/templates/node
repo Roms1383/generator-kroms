@@ -25,7 +25,7 @@ jobs:
       script: yarn lint
     - stage: tests
       script: yarn test --coverage
-      after_success: test $TRAVIS_BRANCH = "master" && test $TRAVIS_TAG = "false" && test $TRAVIS_PULL_REQUEST = "false" && yarn coverage
+      after_success: test "${TRAVIS_BRANCH}" = "master" && test "${TRAVIS_TAG}" = "false" && test "${TRAVIS_PULL_REQUEST}" = "false" && yarn coverage
     - stage: release
       script: yarn release
 matrix:
