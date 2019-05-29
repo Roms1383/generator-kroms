@@ -17,8 +17,8 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../nvm'))
     // dependency manager
     this.composeWith(require.resolve('../renovate'))
-    // code lint
-    this.composeWith(require.resolve('../eslint'))
+    // files lint
+    this.composeWith(require.resolve('../lint'))
     // code tests
     this.composeWith(require.resolve('../jest'))
     // code coverage
