@@ -1,9 +1,9 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
-    this.log('travis')
+    this.box('👷 travis')
   }
-  writing () {
+  configuring () {
     const options = {
       npm: this.npm.latest('npm'),
       yarn: this.npm.latest('yarn')

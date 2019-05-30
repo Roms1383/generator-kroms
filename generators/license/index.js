@@ -1,9 +1,9 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
-    this.log('gitignore')
+    this.box('🔖 license')
   }
-  default () {
+  configuring () {
     const current = `${(new Date()).getFullYear()}`
     const stored = this.config.get('year')
     const year = stored
