@@ -1,9 +1,9 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
-    this.log('renovate')
+    this.box('🤖 renovate')
   }
-  writing () {
+  configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.renovaterc'))
   }
 }

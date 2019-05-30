@@ -1,11 +1,14 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
+  initializing () {
+    this.box('📋 eslint')
+  }
   async install () {
     const name = 'eslint-config-kroms'
     const dependencies = await this.dependencies(name)
     this.yarnInstall(dependencies, { dev: true })
   }
-  writing () {
+  configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.eslintrc'))
   }
 }
