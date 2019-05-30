@@ -22,15 +22,15 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../jest'))
     // code coverage
     this.composeWith(require.resolve('../codacy'))
-    // semantic release
-    this.composeWith(require.resolve('../semantic-release'))
-    // commit message compliancy
-    this.composeWith(require.resolve('../commitlint'))
     // automated actions on git staged files
     this.composeWith(require.resolve('../lint-staged'))
-    // automated git hooks
-    this.composeWith(require.resolve('../husky'))
+    // commit message compliancy
+    this.composeWith(require.resolve('../commitlint'))
     // CI/CD
     this.composeWith(require.resolve('../travis'))
+    // semantic release
+    this.composeWith(require.resolve('../semantic-release'))
+    // automated git hooks
+    this.composeWith(require.resolve('../husky'))
   }
 }
