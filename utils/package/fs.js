@@ -1,6 +1,6 @@
 const R = require('ramda')
 const NAME = 'package.json'
-
+const arrayify = require('../arrayify')
 module.exports = context => {
   const exists = () => context
   && context.fs.exists(context.destinationPath(NAME))
@@ -17,12 +17,27 @@ module.exports = context => {
   : path.includes('.')
     ? R.path(path.split('.'), readJSON(context))
     : R.path([path], readJSON(context))
+  const override = (path, value) => {
+    const current = readJSON()
+    const lens = R.lensPath(arrayify(path))
+    const modified = R.set(lens, value, current)
+    writeJSON(modified)
+  }
+  const merge = (path, value) => {
+    const current = readJSON()
+    const lens = R.lensPath(arrayify(path))
+    const existing = R.path(arrayify(path), current)
+    const modified = R.set(lens, { ...existing, ...value }, current)
+    writeJSON(modified)
+  }
   return {
     exists,
     read,
     readJSON,
     write,
     writeJSON,
-    get
+    get,
+    override,
+    merge
   }
 }

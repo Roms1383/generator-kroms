@@ -13,8 +13,8 @@ module.exports = class extends Generator {
     : current
     this.config.set('year', year)
     this.config.save()
-    const { name = '', email = '', website = '' } = this.package.author()
-    const license = this.package.license()
+    const { name = '', email = '', website = '' } = this.package.author.get() || {}
+    const license = this.package.license.get()
     this.composeWith(require.resolve('generator-license'), { name, email, website, license, year })
   }
 }

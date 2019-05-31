@@ -1,6 +1,5 @@
 const Yeoman = require('yeoman-generator')
-const boxen = require('boxen')
-const fixed = require('fixed-width-string')
+const format = require('../format')
 module.exports = class Generator extends Yeoman {
   constructor (args, opts) {
     super(args, opts)
@@ -17,5 +16,10 @@ module.exports = class Generator extends Yeoman {
     this.log(message)
     return [dependency, ...peers]
   }
-  box (message) { this.log(boxen(fixed(message, 20), { margin: 0, borderStyle: 'round', borderColor: 'gray' })) }
+  box (message) { this.log(format.box(message)) }
+  warn (causes, suggestion = undefined, solutions = undefined) { this.log(format.box(causes, suggestion, solutions)) }
+  fail (causes, suggestion = undefined, solutions = undefined) {
+    this.log(format.mandatory(causes, suggestion, solutions))
+    process.exit(0)
+  }
 }
