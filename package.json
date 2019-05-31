@@ -17,6 +17,8 @@
     "fixed-width-string": "^1.0.0",
     "generator-license": "^5.4.0",
     "ramda": "^0.26.1",
+    "readdirp": "^3.0.1",
+    "request-promise-native": "^1.0.7",
     "yeoman-generator": "^4.0.1",
     "yosay": "^2.0.2"
   },
@@ -47,7 +49,7 @@
     "yo": "^2.0.6"
   },
   "scripts": {
-    "lint": "yarn eslint '*.js' && yarn remark .",
+    "lint": "yarn eslint '**/*.js' && yarn remark .",
     "test": "yarn jest",
     "coverage": "cat ./coverage/lcov.info | codacy-coverage",
     "release": "yarn semantic-release"

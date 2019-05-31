@@ -5,6 +5,8 @@ module.exports = class Generator extends Yeoman {
     super(args, opts)
     this.npm = require('../npm')
     this.package = require('../package')(this)
+    this.inspect = require('../inspect')
+    this.lineify = require('../lineify')
   }
   async dependencies (name) {
     const latest = await this.npm.latest(name)
@@ -17,7 +19,7 @@ module.exports = class Generator extends Yeoman {
     return [dependency, ...peers]
   }
   box (message) { this.log(format.box(message)) }
-  warn (causes, suggestion = undefined, solutions = undefined) { this.log(format.box(causes, suggestion, solutions)) }
+  warn (causes, suggestion = undefined, solutions = undefined) { this.log(format.recommended(causes, suggestion, solutions)) }
   fail (causes, suggestion = undefined, solutions = undefined) {
     this.log(format.mandatory(causes, suggestion, solutions))
     process.exit(0)

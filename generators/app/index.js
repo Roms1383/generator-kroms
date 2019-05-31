@@ -22,6 +22,8 @@ module.exports = class extends Generator {
     this._validate()
     // license
     this.composeWith(require.resolve('../license'))
+    // gitignore
+    this.composeWith(require.resolve('../gitignore'))
     // node version manager
     this.composeWith(require.resolve('../nvm'))
     // dependency manager
