@@ -21,6 +21,6 @@ module.exports = class extends Generator {
     }, [])
     .sort()
     .join('\n')
-    this.fs.write(at, merged)
+    this.fs.write(at, `${merged}\n`)
   }
 }
