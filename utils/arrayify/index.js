@@ -1,5 +1,8 @@
-module.exports = variable => Array.isArray(variable)
+const R = require('ramda')
+module.exports = variable => R.isNil(variable)
 ? variable
-: typeof variable === 'string' && variable.indexOf('.')
-  ? variable.split('.')
-  : [variable]
+: Array.isArray(variable)
+  ? variable
+  : typeof variable === 'string' && variable.indexOf('.')
+    ? variable.split('.')
+    : [variable]
