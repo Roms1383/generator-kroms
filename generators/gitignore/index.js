@@ -13,13 +13,14 @@ module.exports = class extends Generator {
     const exclusions = await request({ method: 'GET', url: `https://www.gitignore.io/api/${extensions.join(',')}` })
     .then(this.lineify)
     const existing = this.lineify(this.fs.read(at))
-    const merged = [...exclusions, ...existing]
+    const custom = this.arrayify(this.config.get('gitignore')) || ['my-tests/']
+    const merged = [...exclusions, ...existing, ...custom]
     .reduce((merged, line) => {
       if (!merged.includes(line)) merged.push(line)
       return merged
     }, [])
     .sort()
     .join('\n')
-    this.fs.write(at, merged)
+    this.fs.write(at, `${merged}\n`)
   }
 }

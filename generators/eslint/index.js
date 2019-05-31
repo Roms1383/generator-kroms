@@ -10,5 +10,7 @@ module.exports = class extends Generator {
   }
   configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.eslintrc'))
+    const ignore = this.arrayify(this.config.get('eslintignore')) || ['coverage/', 'node_modules/', 'my-tests/']
+    this.fs.write(this.destinationPath('.eslintignore'), `${ignore.join('\n')}\n`)
   }
 }

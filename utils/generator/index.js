@@ -7,6 +7,7 @@ module.exports = class Generator extends Yeoman {
     this.package = require('../package')(this)
     this.inspect = require('../inspect')
     this.lineify = require('../lineify')
+    this.arrayify = require('../arrayify')
   }
   async dependencies (name) {
     const latest = await this.npm.latest(name)

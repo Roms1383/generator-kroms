@@ -34,9 +34,10 @@ yo generator-kroms
 ## features
 
 *   synchronise `LICENSE` from your `package.json` informations (thanks to [generator-license](https://github.com/jozefizso/generator-license))
+*   synchronise `.gitignore` from files found in project (only basic set so far), thanks to [gitignore.io](https://gitignore.io)
 *   add configuration file for [Renovate](https://renovatebot.com)
 *   add configuration file for [NVM](https://github.com/nvm-sh/nvm)
-*   add configuration file, dependencies and script for [ESLint](https://github.com/eslint/eslint), using [eslint-config-kroms](https://github.com/Roms1383/eslint-config-kroms) as preset
+*   add configuration files, dependencies and script for [ESLint](https://github.com/eslint/eslint), using [eslint-config-kroms](https://github.com/Roms1383/eslint-config-kroms) as preset
 *   add configuration file, dependencies and script for [RemarkLint](https://github.com/remarkjs/remark-lint), using `remark-preset-lint-recommended` as preset
 *   add configuration file, dependency and script for [Jest](https://github.com/facebook/jest)
 *   add dependency and script for [Codacy](https://github.com/codacy/node-codacy-coverage) (more [infos](generators/codacy/README.md))
