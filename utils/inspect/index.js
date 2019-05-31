@@ -10,7 +10,7 @@ const file = async (filename, root = '.', recursive = false) => recursive
   .on('data', ({ basename }) => { if (basename === filename) return resolve(true) })
   .on('end', () => resolve(false))
 })
-: readdirSync(root).find(basename => (basename === filename)) !== undefined
+: readdirSync(root).find(basename => basename === filename) !== undefined
 const files = async (extension, root = '.') => new Promise((resolve) => {
   readdirp(root, { fileFilter })
   .on('data', ({ basename }) => { if (basename.match(`.${extension}$`) !== null) return resolve(true) })
