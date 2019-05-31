@@ -47,7 +47,7 @@
     "yo": "^2.0.6"
   },
   "scripts": {
-    "lint": "yarn eslint '*.js' && yarn remark .",
+    "lint": "yarn eslint '**/*.js' && yarn remark .",
     "test": "yarn jest",
     "coverage": "cat ./coverage/lcov.info | codacy-coverage",
     "release": "yarn semantic-release"

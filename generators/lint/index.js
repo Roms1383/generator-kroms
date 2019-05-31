@@ -7,6 +7,6 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve('../remark-lint'))
   }
   configuring () {
-    this.package.scripts.set('lint', `yarn eslint '*.js' && yarn remark .`)
+    this.package.scripts.set('lint', `yarn eslint '**/*.js' && yarn remark .`)
   }
 }

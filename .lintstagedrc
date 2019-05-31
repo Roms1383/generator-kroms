@@ -1,5 +1,5 @@
-'*.js':
+'**/*.js':
   - yarn eslint --fix
   - git add
-'*.md':
+'**/*.md':
   - yarn remark
