@@ -12,7 +12,9 @@ module.exports = class extends Generator {
     if (await this.inspect.files('tf')) extensions.push('terraform')
     const exclusions = await request({ method: 'GET', url: `https://www.gitignore.io/api/${extensions.join(',')}` })
     .then(this.lineify)
-    const existing = this.lineify(this.fs.read(at))
+    const existing = this.fs.exists(at)
+    ? this.lineify(this.fs.read(at))
+    : []
     const custom = this.arrayify(this.config.get('gitignore')) || ['my-tests/']
     const merged = [...exclusions, ...existing, ...custom]
     .reduce((merged, line) => {

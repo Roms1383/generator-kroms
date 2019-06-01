@@ -5,6 +5,7 @@
   ],
   "semanticCommitType": ":arrow_up:",
   "semanticCommitScope": null,
+  "semanticCommits": true,
   "packageRules": [
     {
       "updateTypes": [

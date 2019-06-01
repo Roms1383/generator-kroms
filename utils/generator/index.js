@@ -17,7 +17,16 @@ module.exports = class Generator extends Yeoman {
     ? `${dependency} (peers : ${peers.join(', ')})`
     : `${dependency} (no peers)`
     this.log(message)
-    return [dependency, ...peers]
+    return {
+      [name]: `^${latest}`,
+      ...peers
+      .reduce((obj, peer) => {
+        const before = peer.lastIndexOf('@')
+        const name = peer.substr(0, before)
+        const version = peer.substr(before + 1, peer.length - before - 1)
+        return { ...obj, [name]: version }
+      }, {})
+    }
   }
   box (message) { this.log(format.box(message)) }
   warn (causes, suggestion = undefined, solutions = undefined) { this.log(format.recommended(causes, suggestion, solutions)) }

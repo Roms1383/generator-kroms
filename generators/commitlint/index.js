@@ -3,12 +3,9 @@ module.exports = class extends Generator {
   initializing () {
     this.box('🔎 commitlint')
   }
-  async install () {
-    const name = 'commitlint-config-kroms'
-    const dependencies = await this.dependencies(name)
-    this.yarnInstall(dependencies, { dev: true })
-  }
-  configuring () {
+  async configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.commitlintrc.yml'))
+    const dependencies = await this.dependencies('commitlint-config-kroms')
+    this.package.devDependencies.set(dependencies)
   }
 }

@@ -23,11 +23,15 @@ module.exports = context => {
     const modified = R.set(lens, value, current)
     writeJSON(modified)
   }
-  const merge = (path, value) => {
+  const merge = (path, value, sort = false) => {
+    const reorder = object => Object.keys(object)
+    .sort()
+    .reduce((sorted, key) => ({ ...sorted, [key]: object[key] }), {})
     const current = readJSON()
     const lens = R.lensPath(arrayify(path))
     const existing = R.path(arrayify(path), current)
-    const modified = R.set(lens, { ...existing, ...value }, current)
+    const merged = { ...existing, ...value }
+    const modified = R.set(lens, sort ? reorder(merged) : merged, current)
     writeJSON(modified)
   }
   return {

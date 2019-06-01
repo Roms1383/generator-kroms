@@ -45,4 +45,7 @@ module.exports = class extends Generator {
     // automated git hooks
     this.composeWith(require.resolve('../husky'))
   }
+  install () {
+    this.installDependencies({ yarn: true, npm: false, bower: false })
+  }
 }

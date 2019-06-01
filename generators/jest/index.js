@@ -3,13 +3,10 @@ module.exports = class extends Generator {
   initializing () {
     this.box('🃏 jest')
   }
-  async install () {
-    const name = 'jest'
-    const dependencies = await this.dependencies(name)
-    this.yarnInstall(dependencies, { dev: true })
-  }
-  configuring () {
+  async configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('jest.config.js'))
     this.package.scripts.set('test', 'yarn jest')
+    const dependencies = await this.dependencies('jest')
+    this.package.devDependencies.set(dependencies)
   }
 }
