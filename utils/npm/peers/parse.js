@@ -8,5 +8,5 @@ module.exports = (output, versioned = true) => {
   .split(',')
   return versioned
   ? peers
-  : peers.map(peer => peer.split('@')[0])
+  : peers.map(peer => peer.substr(0, peer.lastIndexOf('@')))
 }
