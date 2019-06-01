@@ -1,4 +1,5 @@
 const Generator = require('../../utils/generator')
+const SCOPED = /^@[a-zA-Z0-9-_]+\//
 module.exports = class extends Generator {
   initializing () {
     this.box('🚀 semantic-release')
@@ -8,5 +9,20 @@ module.exports = class extends Generator {
     this.package.scripts.set('release', 'yarn semantic-release')
     const dependencies = await this.dependencies('semantic-release-kroms')
     this.package.devDependencies.set(dependencies)
+    // scoped packages will be considered as private by default
+    // causing failure when publishing with @semantic-release/npm step
+    const is = {}
+    is.private = this.package.fs.get('private') || false
+    is.scoped = this.package.name.get().match(SCOPED) !== null
+    if (!is.private && is.scoped) {
+      const at = this.destinationPath('.npmrc')
+      const existing = this.fs.exists(at)
+      ? this.lineify(this.fs.read(at))
+      : []
+      const modified = !existing.find(line => line.indexOf('access' === 0))
+      ? [].concat(existing, 'access = public')
+      : ['access = public']
+      this.fs.write(at, `${modified.join('\n')}\n`)
+    }
   }
 }
