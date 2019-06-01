@@ -1,6 +1,7 @@
 const R = require('ramda')
 const NAME = 'package.json'
 const arrayify = require('../arrayify')
+const reorder = require('../reorder')
 module.exports = context => {
   const exists = () => context
   && context.fs.exists(context.destinationPath(NAME))
@@ -24,9 +25,6 @@ module.exports = context => {
     writeJSON(modified)
   }
   const merge = (path, value, sort = false) => {
-    const reorder = object => Object.keys(object)
-    .sort()
-    .reduce((sorted, key) => ({ ...sorted, [key]: object[key] }), {})
     const current = readJSON()
     const lens = R.lensPath(arrayify(path))
     const existing = R.path(arrayify(path), current)
