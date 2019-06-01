@@ -3,12 +3,9 @@ module.exports = class extends Generator {
   initializing () {
     this.box('🚫 lint-staged')
   }
-  async install () {
-    const name = 'lint-staged'
-    const dependencies = await this.dependencies(name)
-    this.yarnInstall(dependencies, { dev: true })
-  }
-  configuring () {
+  async configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.lintstagedrc'))
+    const dependencies = await this.dependencies('lint-staged')
+    this.package.devDependencies.set(dependencies)
   }
 }

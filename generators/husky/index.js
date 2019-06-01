@@ -3,12 +3,9 @@ module.exports = class extends Generator {
   initializing () {
     this.box('🐶 husky')
   }
-  async install () {
-    const name = 'husky'
-    const dependencies = await this.dependencies(name)
-    this.yarnInstall(dependencies, { dev: true })
-  }
-  configuring () {
+  async configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.huskyrc'))
+    const dependencies = await this.dependencies('husky')
+    this.package.devDependencies.set(dependencies)
   }
 }

@@ -3,13 +3,10 @@ module.exports = class extends Generator {
   initializing () {
     this.box('🚀 semantic-release')
   }
-  async install () {
-    const name = 'semantic-release-kroms'
-    const dependencies = await this.dependencies(name)
-    this.yarnInstall(dependencies, { dev: true })
-  }
-  configuring () {
+  async configuring () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.releaserc'))
     this.package.scripts.set('release', 'yarn semantic-release')
+    const dependencies = await this.dependencies('semantic-release-kroms')
+    this.package.devDependencies.set(dependencies)
   }
 }
