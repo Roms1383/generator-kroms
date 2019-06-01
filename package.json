@@ -3,7 +3,8 @@
   "version": "0.0.0-semantically-released",
   "description": "Very opinionated generator for Yeoman",
   "files": [
-    "generators"
+    "generators",
+    "utils"
   ],
   "repository": "https://github.com/Roms1383/generator-kroms.git",
   "author": "Romain KELIFA <romain.kelifa@gmail.com>",
