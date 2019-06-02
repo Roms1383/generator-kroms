@@ -16,6 +16,6 @@ describe('introspect', () => {
     })
     it('with missing extension', async () => {
       expect(await files('unknown')).toBe(false)
-    })
+    }, 8000)
   })
 })
