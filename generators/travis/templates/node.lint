@@ -1,0 +1,2 @@
+    - stage: lint
+      script: yarn lint

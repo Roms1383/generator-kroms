@@ -1,6 +1,6 @@
 const parse = require('./parse')
 module.exports = context => {
-  const generate = () => {
+  const generate = (tested) => {
     const delimiter = '*****'
     const at = context.destinationPath('README.md')
     const existing = context.fs.exists(at)
@@ -12,7 +12,7 @@ module.exports = context => {
     ? parse(existing, delimiter)
     : disclaimer
     if (content) {
-      const header = require('./header')(context)
+      const header = require('./header')(context, tested)
       const footer = require('./footer')(context)
       const generated = [header, content, footer].join(`\n\n${delimiter}\n\n`)
       context.fs.write(at, generated)

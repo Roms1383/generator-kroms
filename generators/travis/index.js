@@ -6,7 +6,8 @@ module.exports = class extends Generator {
   configuring () {
     const options = {
       npm: this.npm.latest('npm'),
-      yarn: this.npm.latest('yarn')
+      yarn: this.npm.latest('yarn'),
+      tests: this.tested
     }
     this.fs.copyTpl(this.templatePath('node'), this.destinationPath('.travis.yml'), options)
   }

@@ -21,12 +21,10 @@ stages:
     if: branch = master AND NOT tag AND type NOT IN (pull_request)
 jobs:
   include:
-    - stage: lint
-      script: yarn lint
-    - stage: tests
-      script: yarn test --coverage
-      after_success: if [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_TAG}" = "" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn coverage; fi
-    - stage: release
-      script: yarn release
+<%- include('node.lint') -%>
+<% if (tests) { %>
+<%- include('node.tests') -%>
+<% } %>
+<%- include('node.release') %>
 matrix:
   fast_finish: true

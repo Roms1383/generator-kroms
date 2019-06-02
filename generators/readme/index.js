@@ -4,6 +4,6 @@ module.exports = class extends Generator {
     this.box('📖 readme')
   }
   configuring () {
-    this.readme.generate()
+    this.readme.generate(this.tested)
   }
 }

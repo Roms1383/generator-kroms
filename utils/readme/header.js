@@ -1,13 +1,16 @@
 const R = require('ramda')
 const arrayify = require('../arrayify')
-module.exports = context => {
+module.exports = (context, tested) => {
   const badge = require('../badge')(context)
+  // no need to add codacy badges if there's no unit-test
+  const additional = tested
+  ? ['codacy.quality', 'codacy.coverage']
+  : []
   const badges = [
     'npm',
     'license',
     'travis',
-    'codacy.quality',
-    'codacy.coverage',
+    ...additional,
     'renovate',
     'snyk',
     'david',

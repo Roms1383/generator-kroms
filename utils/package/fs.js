@@ -15,11 +15,7 @@ module.exports = context => {
   && context.fs.writeJSON(context.destinationPath(NAME), content)
   const extendJSON = content => exists()
   && context.fs.extendJSON(context.destinationPath(NAME), content)
-  const get = path => Array.isArray(path)
-  ? R.path(path, readJSON())
-  : path.includes('.')
-    ? R.path(path.split('.'), readJSON(context))
-    : R.path([path], readJSON(context))
+  const get = path => R.path(arrayify(path), readJSON())
   const override = (path, value) => {
     const current = readJSON()
     const lens = R.lensPath(arrayify(path))
@@ -27,11 +23,24 @@ module.exports = context => {
     writeJSON(modified)
   }
   const merge = (path, value, sort = false) => {
+    path = arrayify(path)
     const current = readJSON()
-    const lens = R.lensPath(arrayify(path))
-    const existing = R.path(arrayify(path), current)
+    const lens = R.lensPath(path)
+    const existing = R.path(path, current)
     const merged = { ...existing, ...value }
     const modified = R.set(lens, sort ? reorder(merged) : merged, current)
+    writeJSON(modified)
+  }
+  const unset = (path, names) => {
+    path = arrayify(path)
+    names = arrayify(names)
+    const current = readJSON()
+    const lens = R.lensPath(path)
+    const existing = R.path(path, current)
+    const stripped = Object.keys(existing)
+    .filter(key => !names.includes(key))
+    .reduce((stripped, key) => ({ ...stripped, [key]: existing[key] }), {})
+    const modified = R.set(lens, stripped, current)
     writeJSON(modified)
   }
   return {
@@ -43,6 +52,7 @@ module.exports = context => {
     extendJSON,
     get,
     override,
-    merge
+    merge,
+    unset
   }
 }
