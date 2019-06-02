@@ -13,6 +13,8 @@ module.exports = context => {
   && context.fs.write(context.destinationPath(NAME), content)
   const writeJSON = content => exists()
   && context.fs.writeJSON(context.destinationPath(NAME), content)
+  const extendJSON = content => exists()
+  && context.fs.extendJSON(context.destinationPath(NAME), content)
   const get = path => Array.isArray(path)
   ? R.path(path, readJSON())
   : path.includes('.')
@@ -38,6 +40,7 @@ module.exports = context => {
     readJSON,
     write,
     writeJSON,
+    extendJSON,
     get,
     override,
     merge
