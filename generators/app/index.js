@@ -1,5 +1,6 @@
-const Generator = require('../../utils/generator')
+require('dotenv').config()
 const yosay = require('yosay')
+const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   _validate () {
     const none = !this.package.fs.exists()
@@ -22,6 +23,8 @@ module.exports = class extends Generator {
     this._validate()
     // license
     this.composeWith(require.resolve('../license'))
+    // readme
+    this.composeWith(require.resolve('../readme'))
     // gitignore
     this.composeWith(require.resolve('../gitignore'))
     // node version manager

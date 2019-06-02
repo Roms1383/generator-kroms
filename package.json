@@ -14,6 +14,7 @@
   ],
   "dependencies": {
     "boxen": "^4.0.0",
+    "dotenv": "^8.0.0",
     "execa": "^1.0.0",
     "fixed-width-string": "^1.0.0",
     "generator-license": "^5.4.0",
@@ -46,8 +47,8 @@
     "semantic-release-kroms": "^1.1.0"
   },
   "peerDependencies": {
-    "yo": "^2.0.6",
-    "request": "^2.34"
+    "request": "^2.34",
+    "yo": "^2.0.6"
   },
   "scripts": {
     "lint": "yarn eslint '**/*.js' && yarn remark .",
