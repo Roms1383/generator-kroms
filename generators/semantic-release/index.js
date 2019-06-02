@@ -1,5 +1,4 @@
 const Generator = require('../../utils/generator')
-const SCOPED = /^@[a-zA-Z0-9-_]+\//
 module.exports = class extends Generator {
   initializing () {
     this.box('🚀 semantic-release')
@@ -13,7 +12,7 @@ module.exports = class extends Generator {
     // causing failure when publishing with @semantic-release/npm step
     const is = {}
     is.private = this.package.fs.get('private') || false
-    is.scoped = this.package.name.get().match(SCOPED) !== null
+    is.scoped = this.package.scoped(this.package.name.get())
     if (!is.private && is.scoped) {
       const at = this.destinationPath('.npmrc')
       const existing = this.fs.exists(at)
