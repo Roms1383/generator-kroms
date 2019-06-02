@@ -1,5 +1,7 @@
 const fs = require('./fs')
+const scoped = require('./scoped')
 const name = require('./name')
+const version = require('./version')
 const author = require('./author')
 const license = require('./license')
 const repository = require('./repository')
@@ -13,7 +15,9 @@ const peerDependencies = require('./peerDependencies')
 const scripts = require('./scripts')
 module.exports = context => ({
   fs: fs(context),
+  scoped,
   name: name(context),
+  version: version(context),
   author: author(context),
   license: license(context),
   repository: repository(context),

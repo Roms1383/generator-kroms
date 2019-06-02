@@ -4,8 +4,10 @@ module.exports = class extends Generator {
     this.box('📉 codacy')
   }
   async configuring () {
-    this.package.scripts.set('coverage', 'cat ./coverage/lcov.info | codacy-coverage')
+    if (this.tested) this.package.scripts.set('coverage', 'cat ./coverage/lcov.info | codacy-coverage')
+    else this.package.scripts.unset('coverage')
     const dependencies = await this.dependencies('codacy-coverage')
-    this.package.devDependencies.set(dependencies)
+    if (this.tested) this.package.devDependencies.set(dependencies)
+    else this.package.devDependencies.unset(dependencies)
   }
 }

@@ -1,6 +1,7 @@
 const R = require('ramda')
 const NAME = 'package.json'
 const arrayify = require('../arrayify')
+const reorder = require('../reorder')
 module.exports = context => {
   const exists = () => context
   && context.fs.exists(context.destinationPath(NAME))
@@ -12,11 +13,9 @@ module.exports = context => {
   && context.fs.write(context.destinationPath(NAME), content)
   const writeJSON = content => exists()
   && context.fs.writeJSON(context.destinationPath(NAME), content)
-  const get = path => Array.isArray(path)
-  ? R.path(path, readJSON())
-  : path.includes('.')
-    ? R.path(path.split('.'), readJSON(context))
-    : R.path([path], readJSON(context))
+  const extendJSON = content => exists()
+  && context.fs.extendJSON(context.destinationPath(NAME), content)
+  const get = path => R.path(arrayify(path), readJSON())
   const override = (path, value) => {
     const current = readJSON()
     const lens = R.lensPath(arrayify(path))
@@ -24,14 +23,24 @@ module.exports = context => {
     writeJSON(modified)
   }
   const merge = (path, value, sort = false) => {
-    const reorder = object => Object.keys(object)
-    .sort()
-    .reduce((sorted, key) => ({ ...sorted, [key]: object[key] }), {})
+    path = arrayify(path)
     const current = readJSON()
-    const lens = R.lensPath(arrayify(path))
-    const existing = R.path(arrayify(path), current)
+    const lens = R.lensPath(path)
+    const existing = R.path(path, current)
     const merged = { ...existing, ...value }
     const modified = R.set(lens, sort ? reorder(merged) : merged, current)
+    writeJSON(modified)
+  }
+  const unset = (path, names) => {
+    path = arrayify(path)
+    names = arrayify(names)
+    const current = readJSON()
+    const lens = R.lensPath(path)
+    const existing = R.path(path, current)
+    const stripped = Object.keys(existing)
+    .filter(key => !names.includes(key))
+    .reduce((stripped, key) => ({ ...stripped, [key]: existing[key] }), {})
+    const modified = R.set(lens, stripped, current)
     writeJSON(modified)
   }
   return {
@@ -40,8 +49,10 @@ module.exports = context => {
     readJSON,
     write,
     writeJSON,
+    extendJSON,
     get,
     override,
-    merge
+    merge,
+    unset
   }
 }

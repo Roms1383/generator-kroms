@@ -1,0 +1,1 @@
+module.exports = (id, owner, repository) => `[![Codacy Quality](https://api.codacy.com/project/badge/Grade/${id})](https://www.codacy.com/app/${owner}/${repository}?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=${owner}/${repository}&amp;utm_campaign=Badge_Grade)`
