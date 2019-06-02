@@ -14,7 +14,7 @@ module.exports = context => {
     if (content) {
       const header = require('./header')(context, tested)
       const footer = require('./footer')(context)
-      const generated = [header, content, footer].join(`\n\n${delimiter}\n\n`)
+      const generated = `${[header, content, footer].join(`\n\n${delimiter}\n\n`)}\n`
       context.fs.write(at, generated)
     } else context.warn('delimiter in existing README.md', 'please update it manually')
   }
