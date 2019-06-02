@@ -1,6 +1,7 @@
 const fs = require('./fs')
 const scoped = require('./scoped')
 const name = require('./name')
+const version = require('./version')
 const author = require('./author')
 const license = require('./license')
 const repository = require('./repository')
@@ -16,6 +17,7 @@ module.exports = context => ({
   fs: fs(context),
   scoped,
   name: name(context),
+  version: version(context),
   author: author(context),
   license: license(context),
   repository: repository(context),

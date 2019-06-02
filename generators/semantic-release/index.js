@@ -8,6 +8,7 @@ module.exports = class extends Generator {
     this.package.scripts.set('release', 'yarn semantic-release')
     const dependencies = await this.dependencies('semantic-release-kroms')
     this.package.devDependencies.set(dependencies)
+    this.package.version.set('0.0.0-semantically-released')
     // scoped packages will be considered as private by default
     // causing failure when publishing with @semantic-release/npm step
     const is = {}
