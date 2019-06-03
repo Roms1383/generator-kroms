@@ -3,8 +3,8 @@ const parse = require('./parse')
 module.exports = context => ({
   get: () => {
     const repository = fs(context).get('repository')
-    return typeof repository === 'string'
-    ? parse(repository)
-    : repository
+    if (typeof repository === 'string') return parse(repository)
+    const { url = undefined } = repository || {}
+    return parse(url)
   }
 })
