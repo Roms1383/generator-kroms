@@ -1,12 +1,11 @@
 const R = require('ramda')
 const arrayify = require('../arrayify')
 module.exports = (context, tested) => {
-  const badge = require('../badge')(context)
   // no need to add codacy badges if there's no unit-test
   const additional = tested
   ? ['codacy.quality', 'codacy.coverage']
   : []
-  const badges = [
+  const set = [
     'npm',
     'license',
     'travis',
@@ -17,7 +16,9 @@ module.exports = (context, tested) => {
     'semantic',
     'gitmoji'
   ]
-  .map(name => R.path(arrayify(name), badge)())
+  const methods = require('../badge')(context, set)
+  const badges = set
+  .map(name => R.path(arrayify(name), methods)())
   .join(' ')
   const name = require('../package/name')(context).get()
   const description = require('../package/description')(context).get()
