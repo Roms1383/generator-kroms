@@ -49,9 +49,10 @@ module.exports = class extends Generator {
     && fs.lstatSync(at.generator).isSymbolicLink()
     if (symlinked.inside || symlinked.outside) return 'symlinked'
     // generator has already been specified in project's package.json
-    const wanted = this.package.fs.get(lens.devDependency)
-    || this.package.fs.get(lens.peerDependency)
-    || this.package.fs.get(lens.dependency)
+    const wanted = !itself
+    && (this.package.fs.get(lens.devDependency)
+        || this.package.fs.get(lens.peerDependency)
+        || this.package.fs.get(lens.dependency))
     if (!wanted) return 'missing in package.json'
     // generator is specified in project's yarn.lock and folder exists in project's node_modules
     const installed = !itself
