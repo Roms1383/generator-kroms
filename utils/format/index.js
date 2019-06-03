@@ -1,8 +1,13 @@
 const chalk = require('chalk')
 const boxen = require('boxen')
-const fixed = require('fixed-width-string')
 const arrayify = variable => Array.isArray(variable) ? variable : [variable]
-const box = message => boxen(fixed(message, 20), { margin: 0, borderStyle: 'round', borderColor: 'gray' })
+const box = (message,
+  options = {
+    margin: 0,
+    padding: 0,
+    borderStyle: 'round',
+    borderColor: 'yellow',
+    align: 'center' }) => boxen(message, options)
 const multiline = (icon, title, causes, suggestion = undefined, solutions = undefined) => {
   const left = [icon, title, arrayify(causes).join(', ')].join(' ')
   const top = suggestion

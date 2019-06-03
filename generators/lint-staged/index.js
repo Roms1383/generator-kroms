@@ -1,10 +1,12 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
-    this.box('🚫 lint-staged')
+    this.introduce('🚫 lint-staged')
   }
-  async configuring () {
+  async copyTemplates () {
     this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.lintstagedrc'))
+  }
+  async syncDependencies () {
     const dependencies = await this.dependencies('lint-staged')
     this.package.devDependencies.set(dependencies)
   }

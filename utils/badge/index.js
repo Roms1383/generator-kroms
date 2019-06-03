@@ -5,7 +5,7 @@ module.exports = (context, specifics = undefined) => {
   const { owner, repository } = require('../package/repository')(context).get()
   const name = require('../package/name')(context).get()
   const output = {}
-  if (requested.some(i => i.match(/^codacy/i) !== null)) output.codacy = () => require('./codacy')(context)(owner, repository)
+  if (requested.some(i => i.match(/^codacy/i) !== null)) output.codacy = require('./codacy')(context)(owner, repository)
   if (requested.includes('david')) output.david = () => require('./david')(owner, repository)
   if (requested.includes('gitmoji')) output.gitmoji = require('./gitmoji')
   if (requested.includes('license')) output.license = require('./license')

@@ -1,9 +1,11 @@
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
-    this.box('📖 readme')
+    this.introduce('📖 readme')
   }
   configuring () {
-    this.readme.generate(this.tested)
+    this.task(`generating README.md...`)
+    const { tested, covered } = this
+    this.readme.generate({ tested, covered })
   }
 }

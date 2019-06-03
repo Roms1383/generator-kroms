@@ -1,8 +1,8 @@
 const R = require('ramda')
 const arrayify = require('../arrayify')
-module.exports = (context, tested) => {
+module.exports = (context, options) => {
   // no need to add codacy badges if there's no unit-test
-  const additional = tested
+  const additional = options.tested && options.covered
   ? ['codacy.quality', 'codacy.coverage']
   : []
   const set = [
