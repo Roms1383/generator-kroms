@@ -13,6 +13,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
+    "@yarnpkg/lockfile": "^1.1.0",
     "boxen": "^4.0.0",
     "dotenv": "^8.0.0",
     "execa": "^1.0.0",
@@ -29,7 +30,6 @@
     "@commitlint/cli": "^8.0.0",
     "@semantic-release/github": "^5.2.10",
     "@semantic-release/npm": "^5.1.7",
-    "@yarnpkg/lockfile": "^1.1.0",
     "codacy-coverage": "^3.4.0",
     "commitlint-config-kroms": "^1.1.1",
     "eslint": "^5.16.0",
