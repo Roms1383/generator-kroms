@@ -1,3 +1,3 @@
     - stage: tests
-      script: yarn test<% if (coverage) { %> --coverage<% } %>
-      after_success: if [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_TAG}" = "" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn coverage; fi
+      script: yarn test<% if (coverage) { %> --coverage
+      after_success: if [ "${TRAVIS_BRANCH}" = "master" ] && [ "${TRAVIS_TAG}" = "" ] && [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then yarn coverage; fi<% } %>

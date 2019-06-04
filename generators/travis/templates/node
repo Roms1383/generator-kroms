@@ -21,12 +21,12 @@ stages:
     if: branch = master AND NOT tag AND type NOT IN (pull_request)
 jobs:
   include:
-<%- include('node.lint') -%>
-<% if (tests) { %>
-<%- include('node.tests') -%>
-<% } %>
-<% if (release) { %>
+<%- include('node.lint') %>
+<% if (tests) { -%>
+<%- include('node.tests') %>
+<% } -%>
+<% if (release) { -%>
 <%- include('node.release') %>
-<% } %>
+<% } -%>
 matrix:
   fast_finish: true
