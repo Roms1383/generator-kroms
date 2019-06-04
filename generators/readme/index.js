@@ -5,7 +5,7 @@ module.exports = class extends Generator {
   }
   configuring () {
     this.task(`generating README.md...`)
-    const { tested, covered } = this
-    this.readme.generate({ tested, covered })
+    const { tested, covered, released } = this
+    this.readme.generate({ tested, covered, released })
   }
 }
