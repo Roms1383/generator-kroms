@@ -25,6 +25,8 @@ jobs:
 <% if (tests) { %>
 <%- include('node.tests') -%>
 <% } %>
+<% if (release) { %>
 <%- include('node.release') %>
+<% } %>
 matrix:
   fast_finish: true

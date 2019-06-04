@@ -6,6 +6,7 @@ module.exports = class Generator extends Yeoman {
     super(args, opts)
     this.tested = opts.tested
     this.covered = opts.covered
+    this.released = opts.released
     this.npm = require('../npm')
     this.package = require('../package')(this)
     this.readme = require('../readme')(this)

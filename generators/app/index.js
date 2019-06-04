@@ -78,7 +78,8 @@ module.exports = class extends Generator {
     this.task(`retrieving options...`)
     const tested = await this.inspect.files('test.js')
     const covered = R.isNil(this.config.get('coverage')) || this.config.get('coverage')
-    const options = { tested, covered }
+    const released = R.isNil(this.config.get('release')) || this.config.get('release')
+    const options = { tested, covered, released }
     this.info('found *.test.js files in project')
     this.info(`this project ${covered ? '' : "doesn't "}use coverage`)
     // compose generators

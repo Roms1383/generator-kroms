@@ -1,14 +1,18 @@
+const chalk = require('chalk')
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
     this.introduce('🚀 semantic-release')
   }
   async configuring () {
-    this.package.version.set('0.0.0-semantically-released')
+    const version = '0.0.0-semantically-released'
+    if (this.released) this.package.version.set(version)
+    else if (this.package.version.get() === version) this.log(`⚠️  project explicitly not released but version in package.json is ${chalk.red('0.0.0-semantically-released')}`)
     await super.configuring()
   }
   async copyTemplates () {
-    this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.releaserc'))
+    if (this.released) this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.releaserc'))
+    else this.fs.delete(this.destinationPath('.releaserc'))
     // scoped packages will be considered as private by default
     // causing failure when publishing with @semantic-release/npm step
     const is = {}
@@ -25,9 +29,12 @@ module.exports = class extends Generator {
   }
   async syncDependencies () {
     const dependencies = await this.dependencies('semantic-release-kroms')
-    this.package.devDependencies.set(dependencies)
+    if (this.released) this.package.devDependencies.set(dependencies)
+    else this.package.devDependencies.unset(dependencies)
   }
   async syncScripts () {
-    this.package.scripts.set('release', 'yarn semantic-release')
+    const command = 'yarn semantic-release'
+    if (this.released) this.package.scripts.set('release', command)
+    else if (this.package.scripts.get('release') === command) this.package.scripts.unset('release')
   }
 }

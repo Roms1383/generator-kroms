@@ -8,7 +8,8 @@ module.exports = class extends Generator {
       npm: this.npm.latest('npm'),
       yarn: this.npm.latest('yarn'),
       tests: this.tested,
-      coverage: this.covered
+      coverage: this.covered,
+      release: this.released
     }
     this.fs.copyTpl(this.templatePath('node'), this.destinationPath('.travis.yml'), options)
   }
