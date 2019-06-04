@@ -82,6 +82,7 @@ module.exports = class extends Generator {
     const options = { tested, covered, released }
     this.info('found *.test.js files in project')
     this.info(`this project ${covered ? '' : "doesn't "}use coverage`)
+    this.info(`this project ${released ? '' : "doesn't "}use release`)
     // compose generators
     this.task('this generator is composed of these utilities')
     // license
