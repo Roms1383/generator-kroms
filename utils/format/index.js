@@ -7,7 +7,8 @@ const box = (message,
     padding: 0,
     borderStyle: 'round',
     borderColor: 'yellow',
-    align: 'center' }) => boxen(message, options)
+    align: 'center'
+  }) => boxen(message, options)
 const multiline = (icon, title, causes, suggestion = undefined, solutions = undefined) => {
   const left = [icon, title, arrayify(causes).join(', ')].join(' ')
   const top = suggestion

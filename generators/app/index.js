@@ -20,6 +20,7 @@ module.exports = class extends Generator {
     const recommended = missing(['main', 'files', 'description', 'keywords'])
     if (recommended.length > 0) this.warn(recommended, 'please consider filling recommended field(s) in package.json')
   }
+
   async _version () {
     const at = {}
     const file = {}
@@ -68,6 +69,7 @@ module.exports = class extends Generator {
     // there might be missing files/folders
     return 'unknown'
   }
+
   async initializing () {
     this.log(yosay(`welcome to kroms scaffolding utility !\n${chalk.grey(`(${await this._version()})`)}`))
     this.box('INITIALIZING')
@@ -75,7 +77,7 @@ module.exports = class extends Generator {
     this.task('validating package.json fields...')
     this._validate()
     // retrieve options
-    this.task(`retrieving options...`)
+    this.task('retrieving options...')
     const tested = await this.inspect.files('test.js')
     const covered = R.isNil(this.config.get('coverage')) || this.config.get('coverage')
     const released = R.isNil(this.config.get('release')) || this.config.get('release')
@@ -112,14 +114,17 @@ module.exports = class extends Generator {
     // automated git hooks
     this.composeWith(require.resolve('../husky'), options)
   }
+
   configuring () {
     this.box('CONFIGURING')
     super.configuring()
   }
+
   install () {
     this.box('INSTALL')
     this.installDependencies({ yarn: true, npm: false, bower: false })
   }
+
   end () {
     this.step('finished !')
     this.log(`⚠️  don't forget to run ${chalk.cyan('nvm use')} at least once to avoid inconsistencies`)

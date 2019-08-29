@@ -14,6 +14,7 @@ module.exports = class Generator extends Yeoman {
     this.lineify = require('../lineify')
     this.arrayify = require('../arrayify')
   }
+
   async dependencies (name) {
     this.task(`retrieving latest version and peer dependencies for ${name}...`)
     const latest = await this.npm.latest(name)
@@ -34,6 +35,7 @@ module.exports = class Generator extends Yeoman {
       }, {})
     }
   }
+
   introduce (message) { this.log(message) }
   box (message) { this.log(format.box(chalk.yellow(message))) }
   warn (causes, suggestion = undefined, solutions = undefined) { this.log(format.recommended(causes, suggestion, solutions)) }
@@ -41,17 +43,21 @@ module.exports = class Generator extends Yeoman {
     this.log(format.mandatory(causes, suggestion, solutions))
     process.exit(0)
   }
+
   carriage () { this.log('\n') }
   step (message) {
     this.carriage()
     this.log(chalk.yellow(message))
   }
+
   task (message) {
     this.log(chalk.yellow(message))
   }
+
   info (message) {
     this.log(chalk.grey(message))
   }
+
   // lifecycle
   async copyTemplates () {}
   async syncDependencies () {}

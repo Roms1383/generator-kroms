@@ -6,7 +6,8 @@ module.exports = class extends Generator {
     // markdown lint
     this.composeWith(require.resolve('../remark-lint'))
   }
+
   async copyTemplates () {
-    this.package.scripts.set('lint', `yarn eslint '**/*.js' && yarn remark .`)
+    this.package.scripts.set('lint', 'yarn eslint \'**/*.js\' && yarn remark .')
   }
 }

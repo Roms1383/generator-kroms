@@ -3,6 +3,7 @@ module.exports = class extends Generator {
   initializing () {
     this.introduce('👷 travis')
   }
+
   async copyTemplates () {
     const options = {
       npm: this.npm.latest('npm'),
