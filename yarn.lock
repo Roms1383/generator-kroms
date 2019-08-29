@@ -1852,10 +1852,10 @@ commander@^2.20.0, commander@^2.x, commander@~2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha512-7j2y+40w61zy6YC2iRNpUe/NwhNyoXrYpHMrSunaMG64nRnaf96zO/KMQR4OyN/UnE5KLyEBnKHd4aG3rskjpQ==
 
-commitlint-config-kroms@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/commitlint-config-kroms/-/commitlint-config-kroms-1.1.3.tgz#f4d10e67702ac338033fba41e8bf1eef1e2f406a"
-  integrity sha512-gWaXaOMCwkJX1W08gYjBAzN12tj2QnuuTGRTiIkmx0zoeoluK6i1TDS8u7SG9GtG3BQjJnpbdyPnFhqXLJGHcQ==
+commitlint-config-kroms@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/commitlint-config-kroms/-/commitlint-config-kroms-1.1.4.tgz#ee3cc9d09bd4a68b40e1128603854ec895d3841d"
+  integrity sha512-8fCtT5yKZ4vPVcvcwpWCH+hjck3kWRWp9JIr5+auXWyg/5D7jLZrva0HBlcuaEh2n8LHgbuoZiWz8HF4Bgs7xg==
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -2619,10 +2619,10 @@ escodegen@1.x.x, escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-kroms@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/eslint-config-kroms/-/eslint-config-kroms-1.1.5.tgz#774f79bbfd4d0f4e0204bdc963894bf9274ec42a"
-  integrity sha512-Di9Gcss+ofPTrCY6T1CHGqO1EL9uHLhucTzzyewNda1rDle0P0+Mz7ZAF/HWsgGActmIye+KDfU9uTgiPh9+Tg==
+eslint-config-kroms@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-kroms/-/eslint-config-kroms-1.1.6.tgz#01a3b2190bcbe29bb165b99d75b8811ab36ef991"
+  integrity sha512-l0adsSGGJJV+SE1vaVv7Mc4AzL/q/Sp9oKFHAgNadrol5HDR8TDJtVZJuMTEzkpkNQ4Zjjmj1Dz4PdJYbgGMmA==
 
 eslint-config-standard@^14.1.0:
   version "14.1.0"
@@ -8123,10 +8123,10 @@ semantic-release-gitmoji@^1.3.2:
     lodash.uniq "^4.5.0"
     node-emoji "^1.8.1"
 
-semantic-release-kroms@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/semantic-release-kroms/-/semantic-release-kroms-1.1.3.tgz#f72cc09b50f2ac8e555bb7c1b81ccd2fa80631ff"
-  integrity sha512-TkKH5SAI8J/yovef2BY9K6pTNS6gg/J4j2ODduQzdW1MK6q4YafgOwRhRP77ARzqmN2YP+n0w/Vp8ASzXX2BZw==
+semantic-release-kroms@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/semantic-release-kroms/-/semantic-release-kroms-1.1.4.tgz#4ef0a5e8ea2fb0b3f52f470de7d404d1c63eabc7"
+  integrity sha512-sww658UrejU4G8yHpbusWL1g8vJG3a/K+X+b/fmeZGW4Cn3q/va3nwSlNZBM5jKnSQl1SRlECloqcxE6lhTzGw==
 
 semantic-release@^15.13.24:
   version "15.13.24"

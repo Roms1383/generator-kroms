@@ -31,6 +31,7 @@ module.exports = class Generator extends Yeoman {
         const before = peer.lastIndexOf('@')
         const name = peer.substr(0, before)
         const version = peer.substr(before + 1, peer.length - before - 1)
+        this.log(name + ' ' + version)
         return { ...obj, [name]: version }
       }, {})
     }
