@@ -1,8 +1,10 @@
+*.lcov
 *.log
 *.pid
 *.pid.lock
 *.seed
 *.tgz
+*.tsbuildinfo
 .cache
 .dynamodb/
 .env
