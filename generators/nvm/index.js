@@ -5,6 +5,9 @@ module.exports = class extends Generator {
   }
 
   async copyTemplates () {
-    this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.nvmrc'), { node: '8.12.0' })
+    const node = this.config.get('use-aws-lambda')
+    ? '10.16.3'
+    : '10.17.0'
+    this.fs.copyTpl(this.templatePath('conf'), this.destinationPath('.nvmrc'), { node })
   }
 }

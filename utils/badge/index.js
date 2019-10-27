@@ -1,7 +1,7 @@
 module.exports = (context, specifics = undefined) => {
   const requested = specifics && specifics.length > 0
   ? specifics
-  : ['codacy.coverage', 'codacy.quality', 'david', 'gitmoji', 'license', 'npm', 'renovate', 'semantic', 'snyk', 'travis']
+  : ['codacy.coverage', 'codacy.quality', 'david', 'gitmoji', 'license', 'npm', 'renovate', 'semantic', 'travis']
   const { owner, repository } = require('../package/repository')(context).get()
   const name = require('../package/name')(context).get()
   const output = {}
@@ -12,7 +12,6 @@ module.exports = (context, specifics = undefined) => {
   if (requested.includes('npm')) output.npm = () => require('./npm')(owner, repository, name)
   if (requested.includes('renovate')) output.renovate = require('./renovate')
   if (requested.includes('semantic')) output.semantic = require('./semantic-release')
-  if (requested.includes('snyk')) output.snyk = () => require('./snyk')(owner, repository)
   if (requested.includes('travis')) output.travis = () => require('./travis')(owner, repository)
   return output
 }

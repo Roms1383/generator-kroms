@@ -20,7 +20,6 @@ module.exports = (context, options) => {
     'travis',
     ...optional.coverage,
     'renovate',
-    'snyk',
     'david',
     ...optional.release,
     'gitmoji'
