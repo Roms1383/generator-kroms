@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "@yarnpkg/lockfile": "^1.1.0",
-    "boxen": "^4.1.0",
+    "boxen": "^5.0.0",
     "dotenv": "^8.2.0",
     "execa": "^3.2.0",
     "fixed-width-string": "^1.0.0",
