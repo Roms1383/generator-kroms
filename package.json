@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "request": "^2.88.0",
-    "yo": "^3.1.0"
+    "yo": "^4.0.0"
   },
   "scripts": {
     "lint": "yarn eslint '**/*.js' && yarn remark .",
