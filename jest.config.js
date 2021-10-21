@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = async () => ({
   verbose: true,
   testEnvironment: 'node'
-}
+})
