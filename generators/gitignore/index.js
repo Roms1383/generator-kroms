@@ -1,4 +1,4 @@
-const request = require('request-promise-native')
+const axios = require('axios')
 const Generator = require('../../utils/generator')
 module.exports = class extends Generator {
   initializing () {
@@ -22,10 +22,9 @@ module.exports = class extends Generator {
       extensions.push('terraform')
     }
     this.info(`retrieving ignored files from gitignore.io for ${extensions.join(',')}`)
-    const exclusions = await request({
-      method: 'GET',
-      url: `https://www.gitignore.io/api/${extensions.join(',')}`
-    }).then(this.lineify)
+    const exclusions = await axios.get(`https://www.gitignore.io/api/${extensions.join(',')}`)
+    .then(({ data }) => data)
+    .then(this.lineify)
     const existing = this.fs.exists(at) ? this.lineify(this.fs.read(at)) : []
     const custom = this.arrayify(this.config.get('gitignore')) || ['my-tests/']
     const merged = [...exclusions, ...existing, ...custom]
