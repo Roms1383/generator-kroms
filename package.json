@@ -23,7 +23,7 @@
     "ramda": "^0.27.1",
     "readdirp": "^3.6.0",
     "semver": "^7.3.5",
-    "yeoman-generator": "^5.4.2",
+    "yeoman-generator": "^4.13.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
