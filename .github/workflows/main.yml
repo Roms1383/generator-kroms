@@ -1,0 +1,82 @@
+name: build
+on: [push]
+env:
+  NPM: '6.14.8'
+  YARN: '1.22.5'
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - name: Use NPM and Yarn
+        run: |
+          npm i -g npm@$NPM
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN
+          export PATH="$HOME/.yarn/bin:$PATH"
+      - name: Lint files
+        run: |
+          yarn
+          yarn lint
+        env:
+          CI: true
+  test:
+    name: Unit test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - name: Use NPM and Yarn
+        run: |
+          npm i -g npm@$NPM
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN
+          export PATH="$HOME/.yarn/bin:$PATH"
+      - name: Unit test
+        run: |
+          yarn
+          yarn test
+        env:
+          CI: true
+  release:
+    name: Semantic release
+    if: github.ref == 'refs/heads/master'
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+      - name: Use NPM and Yarn
+        run: |
+          npm i -g npm@$NPM
+          curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN
+          export PATH="$HOME/.yarn/bin:$PATH"
+      - name: Publish release
+        run: |
+          yarn
+          yarn release
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
