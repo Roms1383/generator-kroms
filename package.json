@@ -16,7 +16,7 @@
     "@yarnpkg/lockfile": "^1.1.0",
     "axios": "^0.23.0",
     "boxen": "^4.1.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "execa": "^5.1.1",
     "fixed-width-string": "^2.0.0",
     "generator-license": "^5.5.0",
