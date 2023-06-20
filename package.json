@@ -43,7 +43,7 @@
     "lint-staged": "^11.2.3",
     "remark-cli": "^10.0.0",
     "remark-preset-lint-recommended": "^6.1.1",
-    "semantic-release": "^18.0.0",
+    "semantic-release": "^19.0.0",
     "semantic-release-gitmoji": "^1.4.2",
     "semantic-release-kroms": "^2.0.0"
   },
