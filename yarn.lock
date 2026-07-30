@@ -8898,9 +8898,9 @@ semantic-release-gitmoji@^1.4.2:
     node-emoji "^1.11.0"
 
 semantic-release-kroms@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/semantic-release-kroms/-/semantic-release-kroms-2.0.1.tgz#c9c0494974c8ef807c9cba594c924ef23feecaa4"
-  integrity sha512-wBq058ui1MAYpFJ1ob8vr9QgSWmyDDK+t2FEVubVJS4dJErLrmgo6ZDtw3fy51B4ROEjNEak5orrsKf+3JNm6A==
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/semantic-release-kroms/-/semantic-release-kroms-2.0.4.tgz#0bc00e5b91e46aa2203a100f679a8bca312d7f52"
+  integrity sha512-0AV6H8NylI56o+623EN8zx37eICyJ+aMaYIOwOfNZFDNdmpgyMUJvG3VaRoot7CV+mzJ4qmeWjLnz/1F04Eo5w==
 
 semantic-release@^19.0.0:
   version "19.0.5"
