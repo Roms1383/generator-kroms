@@ -2601,9 +2601,9 @@ commander@^8.2.0:
   integrity sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==
 
 commitlint-config-kroms@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/commitlint-config-kroms/-/commitlint-config-kroms-2.0.2.tgz#466b6e1bb9b6c2226efe0ab4d380ba54655ab4dc"
-  integrity sha512-bDqYb6kJe8JKa+n7vvQB5A2qXlLSHsZ/HxpuFA+PRiKblRMr9ojFJj6hlvCZ40UYQmZNDnLCGwsCSi/8SY+OJA==
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/commitlint-config-kroms/-/commitlint-config-kroms-2.0.5.tgz#b642dcedfe6176549334e04c749dedb1086600c5"
+  integrity sha512-LR1+yTa5UA4k8JDNM9nvVYRhHcvi1fPGt7wx5fuixqlmM8HZEGB4pqWFDkzK4T6uI1VUyfFZ9XlexHPgX4WByw==
 
 common-ancestor-path@^1.0.1:
   version "1.0.1"
